@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — TechPro Solutions</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<main>
+  <div class="container">
+    <div class="profile-layout">
+
+      <!-- ── Sidebar ── -->
+      <aside class="profile-sidebar">
+        <div class="profile-avatar-block">
+          <div class="avatar-circle" id="avatar-initials">…</div>
+          <h3 id="sidebar-name">Loading…</h3>
+          <p  id="sidebar-email"></p>
+        </div>
+
+        <nav class="profile-nav">
+          <div class="profile-nav-item active" data-section="section-info">
+            <i class="fas fa-user"></i> Profile Info
+          </div>
+          <div class="profile-nav-item" data-section="section-password">
+            <i class="fas fa-lock"></i> Change Password
+          </div>
+          <div class="profile-nav-item" data-section="section-payment">
+            <i class="fas fa-credit-card"></i> Payment Methods
+          </div>
+          <div class="profile-nav-item" data-section="section-orders">
+            <i class="fas fa-box"></i> Order History
+          </div>
+        </nav>
+      </aside>
+
+      <!-- ── Main panels ── -->
+      <div>
+
+        <!-- Profile Info -->
+        <section id="section-info" class="profile-section active">
+          <h2 class="profile-section-title"><i class="fas fa-user"></i> Profile Information</h2>
+          <div id="prof-alert"></div>
+
+          <form id="profile-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="prof-first">First Name</label>
+                <input class="form-control" id="prof-first" type="text" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="prof-last">Last Name</label>
+                <input class="form-control" id="prof-last" type="text" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prof-email">Email Address</label>
+              <input class="form-control" id="prof-email" type="email" disabled style="background:var(--gray-100);cursor:not-allowed" />
+              <small style="color:var(--gray-500);font-size:.78rem">Email cannot be changed here. Contact support if needed.</small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prof-phone">Phone Number</label>
+              <input class="form-control" id="prof-phone" type="tel" placeholder="(514) 555-0000" />
+            </div>
+
+            <h4 style="color:var(--blue);margin:1.5rem 0 1rem">Shipping Address</h4>
+
+            <div class="form-group">
+              <label class="form-label" for="prof-street">Street Address</label>
+              <input class="form-control" id="prof-street" type="text" placeholder="123 Main Street" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="prof-city">City</label>
+                <input class="form-control" id="prof-city" type="text" placeholder="Montreal" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="prof-province">Province</label>
+                <input class="form-control" id="prof-province" type="text" placeholder="QC" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="prof-postal">Postal Code</label>
+                <input class="form-control" id="prof-postal" type="text" placeholder="H3A 1B1" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Country</label>
+                <input class="form-control" type="text" value="Canada" disabled style="background:var(--gray-100)" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </section>
+
+        <!-- Change Password -->
+        <section id="section-password" class="profile-section">
+          <h2 class="profile-section-title"><i class="fas fa-lock"></i> Change Password</h2>
+          <div id="pw-alert"></div>
+
+          <form id="password-form" novalidate style="max-width:440px">
+            <div class="form-group">
+              <label class="form-label" for="pw-current">Current Password</label>
+              <input class="form-control" id="pw-current" type="password" autocomplete="current-password" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pw-new">New Password</label>
+              <input class="form-control" id="pw-new" type="password" autocomplete="new-password" required />
+              <div class="pw-requirements" style="margin-top:.625rem">
+                <span class="pw-req" id="pw-req-length"><span class="req-icon"></span>8+ characters</span>
+                <span class="pw-req" id="pw-req-upper"><span class="req-icon"></span>Uppercase letter</span>
+                <span class="pw-req" id="pw-req-lower"><span class="req-icon"></span>Lowercase letter</span>
+                <span class="pw-req" id="pw-req-number"><span class="req-icon"></span>Number</span>
+                <span class="pw-req" id="pw-req-special"><span class="req-icon"></span>Special character</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pw-confirm">Confirm New Password</label>
+              <input class="form-control" id="pw-confirm" type="password" autocomplete="new-password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Password</button>
+          </form>
+        </section>
+
+        <!-- Payment Methods -->
+        <section id="section-payment" class="profile-section">
+          <h2 class="profile-section-title"><i class="fas fa-credit-card"></i> Payment Methods</h2>
+
+          <div class="alert alert-info" style="margin-bottom:1.5rem">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <strong>Your payment data is secure.</strong> Card numbers are never stored on our servers.
+              Payment processing is handled by <strong>Stripe</strong>, a PCI DSS Level 1 certified provider —
+              the same security standard used by banks. Only the last 4 digits and card brand are saved for display.
+            </div>
+          </div>
+
+          <div id="payment-methods-list"></div>
+
+          <button id="add-payment-btn" class="btn btn-outline" style="margin-top:1rem">
+            <i class="fas fa-plus"></i> Add Payment Method
+          </button>
+        </section>
+
+        <!-- Order History -->
+        <section id="section-orders" class="profile-section">
+          <h2 class="profile-section-title"><i class="fas fa-box"></i> Order History</h2>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            Order tracking will appear here once you've made a purchase. Browse our <a href="/" style="color:var(--blue);font-weight:600">listings</a> to get started.
+          </div>
+        </section>
+
+      </div><!-- /main panels -->
+    </div><!-- /profile-layout -->
+  </div><!-- /container -->
+</main>
+
+<!-- ── Add Payment Method Modal ── -->
+<div class="modal-overlay" id="payment-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Payment Method</h3>
+      <button class="modal-close" id="modal-close">&times;</button>
+    </div>
+
+    <div class="alert alert-info" style="margin-bottom:1.25rem">
+      <i class="fas fa-info-circle"></i>
+      <span>Stripe integration required. Add your <code>STRIPE_PUBLIC_KEY</code> to <code>.env</code> and replace this form with <a href="https://stripe.com/docs/stripe-js" target="_blank" style="color:var(--blue)">Stripe Elements</a> to securely accept card data.</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Card Number</label>
+      <input class="form-control" type="text" placeholder="Stripe Elements card field goes here" disabled style="background:var(--gray-100);cursor:not-allowed" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Expiry</label>
+        <input class="form-control" type="text" placeholder="MM / YY" disabled style="background:var(--gray-100)" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">CVC</label>
+        <input class="form-control" type="text" placeholder="•••" disabled style="background:var(--gray-100)" />
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-full" disabled>Add Card (configure Stripe first)</button>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="/js/nav.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>
