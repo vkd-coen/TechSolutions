@@ -2,6 +2,16 @@
 
 Electronics sales & repair website — full-stack Node.js + Express + MongoDB application.
 
+**Live Features:**
+- 🎠 Auto-rotating hero carousel (5s intervals)
+- 🔐 Secure JWT authentication with bcrypt
+- 📱 Fully responsive design (mobile, tablet, desktop)
+- 🛒 Product search, filtering, and pagination
+- 👤 User profiles with secure password management
+- 💳 Payment method management (Stripe-ready)
+- ⚡ Rate-limited API (brute force protection)
+- 🔒 HTTPS-ready with security headers (Helmet.js)
+
 ---
 
 ## How to Run the Website
@@ -85,8 +95,37 @@ Open **http://localhost:5000** in your browser.
 - **Payment data** — Card numbers never touch your server. The profile shows a Stripe Elements placeholder — configure your free Stripe account to enable real payments
 - **HTTPS** — Use HTTP locally. For production: deploy behind Nginx + [Let's Encrypt](https://letsencrypt.org) (free) or use Railway/Render which provision HTTPS automatically
 
+**For detailed security implementation, see [SECURITY.md](./SECURITY.md) — production checklist, encryption strategies, and deployment guidelines.**
+
 ---
 
-## Amazon & eBay Integration
+## Modern Frontend Features
+
+### Hero Carousel
+The home page features an **auto-rotating carousel** that cycles through 3 category showcases every 5 seconds:
+- 🎨 Beautiful gradient backgrounds with smooth fade transitions
+- ⏸️ Click indicators to jump to a specific slide
+- ⏯️ Pauses on hover, resumes on mouse leave
+- 📱 Fully responsive (adapts layout on mobile)
+
+**Implementation:**
+- `public/js/carousel.js` — Auto-rotation logic
+- CSS animations in `public/css/styles.css` — Smooth fade transitions
+- HTML carousel in `public/index.html` — Semantic structure
+
+### Responsive Design
+- **Desktop** (1024px+): Two-column hero (carousel + content side-by-side)
+- **Tablet** (768–1024px): Single-column, optimized layout
+- **Mobile** (< 768px): Full-stack layout, touch-friendly indicators
+- **Adaptive Typography**: Font sizes scale smoothly across devices using `clamp()`
+
+### Modern Styling
+- Clean gradients and color palettes
+- Consistent spacing and typography
+- Smooth transitions and hover effects
+- Professional card-based layouts
+- CSS custom properties for easy theming
+
+---
 
 Products in MongoDB have `amazonUrl` and `ebayUrl` fields. Product cards show **Buy on Amazon** and **Buy on eBay** buttons linking to your listings. When you're ready for full API sync (manage listings from your site), Amazon SP-API and eBay API credentials stay server-side — never exposed to the browser.
